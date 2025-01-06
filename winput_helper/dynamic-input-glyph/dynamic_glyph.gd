@@ -42,6 +42,6 @@ func update_glyph(device) -> void:
 	return set_glyph(glyph_config.controller)
 
 
-## Override to set the glyph texture where needed
-func set_glyph(_glyph) -> void:
-	pass
+## Sets the texture to `glyph`.  Can be overridden for other nodes or to extend functionality.
+func set_glyph(glyph) -> void:
+	self.texture = glyph

@@ -19,6 +19,11 @@ func _enter_tree():
 	get_editor_interface().get_base_control().add_child(http_request)
 	http_request.request_completed.connect(_on_http_request_request_completed)
 	http_request.request(REMOTE_RELEASES_URL)
+	
+	# Dynamic Glyph Nodes
+	add_custom_type("DynamicSprite2DGlyph", "Sprite2D", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_sprite2d_glyph.svg"))
+	add_custom_type("DynamicSprite3DGlyph", "Sprite3D", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_sprite3d_glyph.svg"))
+	add_custom_type("DynamicTextureRectGlyph", "TextureRect", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_texture_rect_glyph.svg"))
 
 
 func _exit_tree():

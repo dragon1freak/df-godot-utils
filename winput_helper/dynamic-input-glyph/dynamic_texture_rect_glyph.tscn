@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ftl0dpi8o3pe"]
-
-[ext_resource type="Script" path="res://addons/winput_helper/dynamic-input-glyph/dynamic_texture_rect_glyph.gd" id="1_2mlr0"]
-
-[node name="DynamicGlyph" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_2mlr0")
