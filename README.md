@@ -24,7 +24,7 @@ Drop any of the addon folders above into your project's `addons` folder to use. 
   - **GlyphConfig**
     - Resource that stores the device glyphs.  Allows for easy reuse between dynamic glyph nodes.
 
-<br>
+---
 
   ### Instructions
   
@@ -47,6 +47,8 @@ Drop any of the addon folders above into your project's `addons` folder to use. 
   - All of the <code>Specific Controller</code> textures will override the <code>Controller</code> texture if provided.  Use this for controller specific glyph textures
 
   Beyond that, the base <code>DynamicGlyph</code> script and the node specific scripts can be extended for further functionality as needed.
+
+---
 
 <details>
   <summary><strong>FAQ</strong></summary>
