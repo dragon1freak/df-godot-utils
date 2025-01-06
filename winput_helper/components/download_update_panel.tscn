@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://addons/winput_helper/components/download_update_panel.gd" id="1_4tm1k"]
 [ext_resource type="Texture2D" uid="uid://ddixs2ish5bi6" path="res://addons/winput_helper/assets/update.svg" id="2_j7shv"]
 
+
 [node name="DownloadUpdatePanel" type="Control"]
 layout_mode = 3
 anchors_preset = 15

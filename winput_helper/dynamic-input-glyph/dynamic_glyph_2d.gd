@@ -1,0 +1,2 @@
+extends DynamicGlyph
+class_name DynamicSprite2DGlyph

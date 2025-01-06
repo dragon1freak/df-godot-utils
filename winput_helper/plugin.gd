@@ -21,9 +21,9 @@ func _enter_tree():
 	http_request.request(REMOTE_RELEASES_URL)
 	
 	# Dynamic Glyph Nodes
-	add_custom_type("DynamicSprite2DGlyph", "Sprite2D", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_sprite2d_glyph.svg"))
-	add_custom_type("DynamicSprite3DGlyph", "Sprite3D", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_sprite3d_glyph.svg"))
-	add_custom_type("DynamicTextureRectGlyph", "TextureRect", preload("./dynamic-input-glyph/dynamic_glyph.gd"), preload("./dynamic-input-glyph/dynamic_texture_rect_glyph.svg"))
+	add_custom_type("DynamicSprite2DGlyph", "Sprite2D", preload("./dynamic-input-glyph/dynamic_glyph_2d.gd"), preload("./dynamic-input-glyph/dynamic_sprite2d_glyph.svg"))
+	add_custom_type("DynamicSprite3DGlyph", "Sprite3D", preload("./dynamic-input-glyph/dynamic_glyph_3d.gd"), preload("./dynamic-input-glyph/dynamic_sprite3d_glyph.svg"))
+	add_custom_type("DynamicTextureRectGlyph", "TextureRect", preload("./dynamic-input-glyph/dynamic_glyph_texture_rect.gd"), preload("./dynamic-input-glyph/dynamic_texture_rect_glyph.svg"))
 
 
 func _exit_tree():

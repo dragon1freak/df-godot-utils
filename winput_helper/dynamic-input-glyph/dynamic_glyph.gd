@@ -4,7 +4,6 @@ class_name DynamicGlyph
 
 ## Automatically change the glyph when the input device changes
 @export var auto_change := true
-
 ## Resource holding the different glyphs.  These can be shared between dynamic glyph nodes
 @export var glyph_config : GlyphConfig
 
