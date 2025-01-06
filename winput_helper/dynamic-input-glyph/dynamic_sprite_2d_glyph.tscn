@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhnkodr1eckhv"]
+
+[ext_resource type="Script" path="res://addons/winput_helper/dynamic-input-glyph/dynamic_sprite_2d_glyph.gd" id="1_28icg"]
+
+[node name="DynamicSprite2DGlyph" type="Sprite2D"]
+script = ExtResource("1_28icg")
