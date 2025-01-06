@@ -8,7 +8,7 @@ Drop any of the addon folders above into your project's `addons` folder to use. 
 ## Addons
 
 <details>
-  <summary><h3>WInput Helper</h3></summary>
+  <summary><h3>WInput Helper - Fork of Input Helper with util nodes</h3></summary>
 
   This is a fork of Nathan Hoad's <a href="https://github.com/nathanhoad/godot_input_helper">Input Helper</a> addon.  All this does is add a simple utility for dynamically showing input glyphs.  
 
