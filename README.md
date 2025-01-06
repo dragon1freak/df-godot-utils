@@ -10,7 +10,7 @@ Drop any of the addon folders above into your project's `addons` folder to use. 
 ### WInput Helper
 <details>
   <summary>Details</summary>
-  This is a fork of Nathan Hoad's [Input Helper](https://github.com/nathanhoad/godot_input_helper) addon.  All this does is add a simple utility for dynamically showing input glyphs.  
+  This is a fork of Nathan Hoad's <a href="https://github.com/nathanhoad/godot_input_helper">Input Helper</a> addon.  All this does is add a simple utility for dynamically showing input glyphs.  
 
   It adds a parent class, three different nodes, and a GlyphConfig resource.
   - DynamicGlyph
