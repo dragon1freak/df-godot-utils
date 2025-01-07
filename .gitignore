@@ -13,3 +13,7 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+
+# Dependancies we want to ignore
+.input_helper/
