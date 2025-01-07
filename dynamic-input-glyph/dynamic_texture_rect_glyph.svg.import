@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjj4sfrwwu6bi"
-path="res://.godot/imported/dynamic_sprite3d_glyph.svg-865e5b7cd257375b7d10722878d15651.ctex"
+uid="uid://ci1clc32kr52t"
+path="res://.godot/imported/dynamic_texture_rect_glyph.svg-0078c29c87dcee1a8f3b07d2c42eedd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/winput_helper/dynamic-input-glyph/dynamic_sprite3d_glyph.svg"
-dest_files=["res://.godot/imported/dynamic_sprite3d_glyph.svg-865e5b7cd257375b7d10722878d15651.ctex"]
+source_file="res://addons/dynamic-input-glyph/dynamic_texture_rect_glyph.svg"
+dest_files=["res://.godot/imported/dynamic_texture_rect_glyph.svg-0078c29c87dcee1a8f3b07d2c42eedd5.ctex"]
 
 [params]
 

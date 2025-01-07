@@ -13,16 +13,14 @@ Drop any of the addon folders above into your project's `addons` folder to use. 
   This is a fork of Nathan Hoad's <a href="https://github.com/nathanhoad/godot_input_helper">Input Helper</a> addon.  All this does is add a simple utility for dynamically showing input glyphs.  
 
   It adds a parent class, three different nodes, and a GlyphConfig resource.
-  - <strong>DynamicGlyph</strong>
-    - Parent class for the dynamic glyph nodes, can be extended for custom functionality.  Can automatically or manually check for device changes and will set the glyph according to whats available in the provided GlyphConfig resource.
   - **DynamicSprite2DGlyph**
-    - Sprite2D that will set its texture based on the current device and passed GlyphConfig
+	- Sprite2D that will set its texture based on the current device and passed GlyphConfig
   - **DynamicSprite3DGlyph**
-    - Sprite3D that will set its texture based on the current device and passed GlyphConfig
+	- Sprite3D that will set its texture based on the current device and passed GlyphConfig
   - **DynamicTextureRectGlyph**
-    - TextureRect that will set its texture based on the current device and passed GlyphConfig
+	- TextureRect that will set its texture based on the current device and passed GlyphConfig
   - **GlyphConfig**
-    - Resource that stores the device glyphs.  Allows for easy reuse between dynamic glyph nodes.
+	- Resource that stores the device glyphs.  Allows for easy reuse between dynamic glyph nodes.
 
 ---
 
