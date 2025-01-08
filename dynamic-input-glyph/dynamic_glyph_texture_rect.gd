@@ -1,5 +1,4 @@
 extends TextureRect
-class_name DynamicTextureRectGlyph
 
 
 ## Automatically change the glyph when the input device changes

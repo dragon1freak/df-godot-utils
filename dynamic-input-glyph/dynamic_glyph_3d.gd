@@ -1,5 +1,4 @@
 extends Sprite3D
-class_name DynamicSprite3DGlyph
 
 
 ## Automatically change the glyph when the input device changes
