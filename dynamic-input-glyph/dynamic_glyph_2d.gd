@@ -1,4 +1,5 @@
 extends Sprite2D
+class_name DynamicSprite2DGlyph
 
 
 ## Automatically change the glyph when the input device changes
