@@ -30,7 +30,6 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("2_ctftf")
 start_open = true
 metadata/_edit_use_anchors_ = true
@@ -42,7 +41,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("2_ctftf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuRouter/MainMenu/PlayMenu"]
@@ -135,9 +133,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="MenuRouter/OptionsMenuInHere"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="OptionsMenu" type="Control" parent="MenuRouter/OptionsMenuInHere/CenterContainer"]
 layout_mode = 2
@@ -166,6 +166,14 @@ size_flags_horizontal = 4
 text = "Back
 "
 
+[node name="Close" type="Button" parent="MenuRouter/OptionsMenuInHere/CenterContainer/OptionsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[connection signal="pressed" from="MenuRouter/MainMenu/PlayMenu/HBoxContainer/Back" to="MenuRouter" method="go_back"]
+[connection signal="pressed" from="MenuRouter/MainMenu/VBoxContainer/Play" to="MenuRouter" method="open_menu" binds= ["playmenu", false]]
 [connection signal="pressed" from="MenuRouter/MainMenu/VBoxContainer/Options" to="MenuRouter" method="open_menu" binds= ["optionsmenu"]]
 [connection signal="pressed" from="MenuRouter/PauseMenu/VBoxContainer/Options" to="MenuRouter" method="open_menu" binds= ["optionsmenu"]]
 [connection signal="pressed" from="MenuRouter/OptionsMenuInHere/CenterContainer/OptionsMenu/VBoxContainer/Button" to="MenuRouter" method="go_back"]
+[connection signal="pressed" from="MenuRouter/OptionsMenuInHere/CenterContainer/OptionsMenu/VBoxContainer/Close" to="MenuRouter" method="close_menu" binds= ["optionsmenu"]]
