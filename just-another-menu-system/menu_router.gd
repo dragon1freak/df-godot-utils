@@ -12,6 +12,7 @@ var OPEN_MENUS : Array[MenuContainer] = []
 
 func _ready() -> void:
 	register_children()
+	mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
 
 
 ## Finds and registers all MenuContainer child nodes
@@ -19,7 +20,8 @@ func register_children() -> void:
 	var menu_children = self.find_children("", "MenuContainer", true)
 	for child in menu_children:
 		MENUS[child.name.to_lower()] = child
-		child.close()
+		if not child.start_open:
+			child.close()
 
 
 ## Registers the passed node with the Menu Router
@@ -35,7 +37,7 @@ func clear_registered_menus() -> void:
 	MENUS = {}
 
 
-func go_back() -> void:
+func go_back(open_next := true) -> void:
 	var current_menu = MENU_STACK.pop_back()
 	var current_open_menu = OPEN_MENUS.pop_back()
 	
@@ -48,7 +50,7 @@ func go_back() -> void:
 		return
 	
 	var next_menu = MENU_STACK.back()
-	if next_menu != null:
+	if open_next and next_menu != null:
 		next_menu.open()
 
 
@@ -58,9 +60,7 @@ func open_menu(menu_key : String, close_last_menu := true, on_open_callback : Ca
 		return
 	
 	if close_last_menu:
-		var last_menu = OPEN_MENUS.pop_back()
-		if last_menu != null:
-			last_menu.close()
+		close_last_menu()
 	
 	target_menu.open()
 	MENU_STACK.push_back(target_menu)
@@ -69,5 +69,30 @@ func open_menu(menu_key : String, close_last_menu := true, on_open_callback : Ca
 	on_open_callback.call()
 
 
+func close_menu(menu_key : String, open_previous_menu := true, on_close_callback : Callable = func(): pass) -> void:
+	var target_menu = MENUS.get(menu_key.to_lower())
+	if target_menu == null or not target_menu.is_open:
+		return
+	
+	var menu_index = OPEN_MENUS.find(target_menu)
+	if menu_index < 0:
+		return
+	
+	for i in range(OPEN_MENUS.size(), menu_index, -1):
+		go_back(false)
+	
+	if open_previous_menu and MENU_STACK.size() > 0:
+		var next_menu = MENU_STACK.back()
+		if next_menu != null:
+			next_menu.open()	
+	#target_menu.close()
+
+
 func get_last_menu() -> MenuContainer:
 	return MENU_STACK.back() if MENU_STACK.size() > 0 else null
+
+
+func close_last_menu() -> void:
+	var last_menu = OPEN_MENUS.pop_back()
+	if last_menu != null:
+		last_menu.close()
