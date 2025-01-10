@@ -20,7 +20,7 @@ func close() -> void:
 
 
 func on_open() -> void:
-	visible = false
+	visible = true
 
 
 func on_close() -> void:

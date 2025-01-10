@@ -66,8 +66,7 @@ func close_menu(menu_key : String, open_previous_menu := true, on_close_callback
 	if menu_index < 0:
 		return
 	
-	for i in range(OPEN_MENUS.size(), menu_index, -1):
-		close_last_menu(true)
+	close_last_menu(true)
 	
 	if open_previous_menu and MENU_STACK.size() > 0:
 		var next_menu = MENU_STACK.back()
@@ -86,15 +85,7 @@ func go_to(menu_key : String) -> void:
 
 ## Go back one step in the menu history, closing the current menu
 func go_back(open_next := true) -> void:
-	close_last_menu(true)
-	
-	if MENU_STACK.size() <= 0:
-		return
-	
-	var next_menu = MENU_STACK.back()
-	if open_next and next_menu != null:
-		next_menu.open()
-		OPEN_MENUS.push_back(next_menu)
+	close_menu(OPEN_MENUS.back().name, open_next)
 
 
 ## Get the most recent menu in the stack
