@@ -39,7 +39,7 @@ func clear_registered_menus() -> void:
 	MENUS = {}
 
 
-## Open the menu with the passed key function
+## Open the menu with the passed key
 ## [on_open_callback] is called after opening the target menu, if it exists
 func open_menu(menu_key : String, on_open_callback : Callable = func(): pass) -> void:
 	var target_menu = MENUS.get(menu_key.to_lower())
@@ -55,7 +55,7 @@ func open_menu(menu_key : String, on_open_callback : Callable = func(): pass) ->
 	on_open_callback.call()
 
 
-## Close the menu with the passed key function
+## Close the menu with the passed key
 ## [on_close_callback] is called after closing the target menu, if it exists
 func close_menu(menu_key : String, open_previous_menu := true, on_close_callback : Callable = func(): pass) -> void:
 	var target_menu = MENUS.get(menu_key.to_lower())
