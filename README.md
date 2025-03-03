@@ -7,6 +7,8 @@ The addons may be original or forks of existing addons (credit and links in thei
 
 Drop any of the addon folders above into your project's `addons` folder to use. Depending on the addon, you may need to enable a plugin in your project settings as well.
 
+Supports Godot 4.3 and above, may work on earlier versions of Godot 4 but they aren't tested.
+
 ## Addons
 
 <details>
@@ -118,4 +120,40 @@ Currently it is **NOT** suggested to nest `MenuContainer` nodes, since only one 
 | on_open()  | Called when the menu opens  |
 | on_close() | Called when the menu closes |
 
+</details>
+
+<details>
+  <summary><h3>Bulk Set Materials</h3></summary>
+
+This plugin adds a tab to the top left dock of the inspector called `Bulk Set Materials`.  From that tab, you can select materials you want to apply as external, just like in the Advanced Import window, but in bulk.  Once the materials are set in the tab, just select the models or directory you want to target in the FileSystem dock and click `Set Materials`, thats it!
+
+Currently supports `.fbx`, `.gltf`, and `.glb`
+
+---
+
+### Instructions
+
+#### Installation:
+
+Drop the <code>bulk_set_material</code> folder into your project's <code>addons</code> folder and enable the <code>BulkSetMaterial</code> plugin in your project settings.
+
+<br>
+
+#### Usage
+
+1. Open the `Bulk Set Materials` tab in the upper left dock
+2. Select the materials you wish to apply to your models by clicking the `Select` button.  The material names **MUST** be unique and **match a material slot on the model**, otherwise it won't be applied as intended.
+3. Select any models or directory you wish to apply the materials to in the `FileSystem` dock.  If you accidentally select other file types or the selected directory contains types other than FBX or GLTF/GLB, don't worry, they will be safely ignored!
+4. Click `Set Materials`
+
+Thats it!  All selected models should have the matching materials set to use the external path of the materials you selected.  
+
+#### Troubleshooting
+
+- One of my materials is being set for more than one slot
+  - BSM uses the material name to match the material slot on the model, meaning the material names **must** be unique. If you have duplicate material names, the first one found in the list that matches will be used.
+- I'm getting an error in the console, something about `f.is_null()`?
+  - As long as everything worked as intended, don't worry about it :)
+
+---
 </details>
