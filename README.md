@@ -123,6 +123,7 @@ Currently it is **NOT** suggested to nest `MenuContainer` nodes, since only one 
 </details>
 
 <h3>Bulk Set Materials (old)</h3>
+
 Has been migrated to its own repo as the [Bulk Model Manager](https://github.com/dragon1freak/godot-bulk-model-manager)
 
 
