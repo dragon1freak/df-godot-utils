@@ -7,6 +7,8 @@ The addons may be original or forks of existing addons (credit and links in thei
 
 Drop any of the addon folders above into your project's `addons` folder to use. Depending on the addon, you may need to enable a plugin in your project settings as well.
 
+Supports Godot 4.3 and above, may work on earlier versions of Godot 4 but they aren't tested.
+
 ## Addons
 
 <h3>Dynamic Input Glyphs - Shows the configured texture based on the current input device</h3>
@@ -28,3 +30,7 @@ More info in the [docs](/just-another-menu-system/README.md)!
 Automatic footstep, jump, and landing sounds for your `CharacterBody3D`! Can also be used in a manual configuration for more complicated controllers or NPCs. Comes with default sounds from [Kenney](https://kenney.nl/) and other CC0 sources.
 
 More info in the [docs](/footstepper/README.md)!
+
+<h3>Bulk Set Materials (old)</h3>
+
+Has been migrated to its own repo as the [Bulk Model Manager](https://github.com/dragon1freak/godot-bulk-model-manager)
