@@ -11,7 +11,7 @@ Supports Godot 4.3 and above, may work on earlier versions of Godot 4 but they a
 
 ## Addons
 
-<h3>Dynamic Input Glyphs - Shows the configured texture based on the current input device</h3>
+<h3>Dynamic Input Glyphs</h3>
 
 Easily show the correct input glyph based on the current input device in both 2D and 3D.
 
