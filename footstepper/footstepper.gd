@@ -21,6 +21,8 @@ var default_audio_bus : String = "Master"
 @export_range(0.01, 4.0) var audio_base_pitch := 1.0
 ## How much the pitch should be randomized between plays. Set to 0 to disable the random variation.
 @export_range(0.0, 1.0, 0.01) var audio_pitch_variation := 0.1
+
+@export_range(3, 12) var number_of_players := 3
 @export_group("")
 
 @export_group("Sounds", "sound_")
@@ -42,8 +44,8 @@ var previous_floor_state := true
 ## The CharacterBody3D parent required for automatic functionality to work
 var parent : CharacterBody3D
 
-## The internal audio stream player used to play sounds
-@onready var audio_player = AudioStreamPlayer3D.new() if audio_is_3d else AudioStreamPlayer.new()
+## Array of available audio players
+var available_players : Array[AudioStreamPlayer] = []
 
 ## Set the distance_travelled to half the footstep_distance
 @onready var distance_travelled := footstep_distance / 2.0
@@ -54,7 +56,7 @@ func _ready() -> void:
 		set_physics_process(false)
 	else:
 		_check_parent()
-	_set_up_audioplayer()
+	_set_up_audioplayers()
 
 
 func _check_parent() -> void:
@@ -66,11 +68,17 @@ func _check_parent() -> void:
 		queue_free()
 
 
-func _set_up_audioplayer() -> void:
-	audio_player.bus = audio_bus if AudioServer.get_bus_index(audio_bus) >= 0 else default_audio_bus
-	audio_player.volume_db = audio_volume
-	audio_player.pitch_scale = audio_base_pitch
-	add_child(audio_player)
+func _set_up_audioplayers() -> void:
+	var target_bus = audio_bus if AudioServer.get_bus_index(audio_bus) >= 0 else default_audio_bus
+
+	for i in number_of_players:
+		var new_audio_player = AudioStreamPlayer3D.new() if audio_is_3d else AudioStreamPlayer.new()
+		new_audio_player.bus = target_bus
+		new_audio_player.volume_db = audio_volume
+		new_audio_player.pitch_scale = audio_base_pitch
+		new_audio_player.finished.connect(_on_stream_finished.bind(new_audio_player))
+		available_players.push_back(new_audio_player)
+		add_child(new_audio_player)
 
 
 func _physics_process(delta: float) -> void:
@@ -114,10 +122,15 @@ func _handle_landing() -> void:
 
 
 func _play_sound(sound : AudioStream) -> void:
-	audio_player.stream = sound
-	audio_player.pitch_scale = randf_range(audio_base_pitch - audio_pitch_variation, audio_base_pitch + audio_pitch_variation)
-	audio_player.play()
+	if available_players.size() > 0:
+		var audio_player = available_players.pop_back()
+		audio_player.stream = sound
+		audio_player.pitch_scale = randf_range(audio_base_pitch - audio_pitch_variation, audio_base_pitch + audio_pitch_variation)
+		audio_player.play()
 
+
+func _on_stream_finished(player) -> void:
+	available_players.push_back(player)
 
 
 # Helper functions used for manual activation
