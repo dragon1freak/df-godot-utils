@@ -14,7 +14,7 @@ Drop the <code>just-another-menu-system</code> folder into your project's <code>
 
 ### Usage
 
-JAMS currently comes with two nodes, a `MenuRouter` and a `MenuContainer`
+JAMS currently comes with two nodes, a `MenuRouter` and a `MenuContainer`.  Add a `MenuRouter`, then add `MenuContainers` as children of your router and name the nodes whatever you want, but be aware that name will be used as the menu's key.  Then simply call `open_menu` on your router and pass the name of the menu you want to open, thats it!  Using Godots advanced signal panel, you can wire up the buttons in your menus to call the different functions on the router directly, meaning you dont need any extra code to open and close your menus!  Read more about the different nodes below.
 
 **MenuRouter**
 
