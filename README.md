@@ -3,8 +3,6 @@
 This collection of addons is intended to speed up projects by providing functionality used across all or many projects such as dynamically showing input device specific glyphs, creating a menu stack to handle menus, etc.
 The addons may be original or forks of existing addons (credit and links in their sections) and will vary in complexity.
 
-All the addons in this repo are under the MIT license.
-
 ## General Usage
 
 Drop any of the addon folders above into your project's `addons` folder to use. Depending on the addon, you may need to enable a plugin in your project settings as well.
