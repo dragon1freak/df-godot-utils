@@ -1,9 +1,24 @@
 extends Control
+class_name MenuRouter
+
+## Emitted when a menu opens, menu_name being the opened menu's name
+signal menu_opened(menu_name)
+## Emitted when a menu closes, menu_name being the closed menu's name
+signal menu_closed(menu_name)
+## Emitted when the MenuRouter is opened, when the first menu in the stack is opened
+signal opened
+## Emitted when the MenuRouter is closed, when all menus in the stack are closed
+signal closed
+
+
+## Control node used as a shared menu background, like a ColorRect
+@export var background : Control
+
 
 ## Dictionary holding all registered menus
 var MENUS : Dictionary = {}
 
-## Menu history
+## Menu history stack, last in first out
 var MENU_STACK : Array[MenuContainer] = []
 
 ## Currently open menus, is usually just one
@@ -11,6 +26,7 @@ var OPEN_MENUS : Array[MenuContainer] = []
 
 
 func _ready() -> void:
+	set_background_visibility(false)
 	register_children()
 	mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
 
@@ -40,9 +56,9 @@ func clear_registered_menus() -> void:
 
 
 ## Open the menu with the passed key
-## [on_open_callback] is called after opening the target menu, if it exists
+## on_open_callback is called after opening the target menu, if it exists
 func open_menu(menu_key : String, on_open_callback : Callable = func(): pass) -> void:
-	var target_menu = MENUS.get(menu_key.to_lower())
+	var target_menu : MenuContainer = MENUS.get(menu_key.to_lower())
 	if target_menu == null or target_menu == get_last_menu():
 		return
 	
@@ -52,11 +68,16 @@ func open_menu(menu_key : String, on_open_callback : Callable = func(): pass) ->
 	MENU_STACK.push_back(target_menu)
 	OPEN_MENUS.push_back(target_menu)
 	
+	if MENU_STACK.size() == 1:
+		opened.emit()
+	set_background_visibility(target_menu.use_shared_background)
+	
+	menu_opened.emit(target_menu.name)
 	on_open_callback.call()
 
 
 ## Close the menu with the passed key
-## [on_close_callback] is called after closing the target menu, if it exists
+## on_close_callback is called after closing the target menu, if it exists
 func close_menu(menu_key : String, open_previous_menu := true, on_close_callback : Callable = func(): pass) -> void:
 	var target_menu = MENUS.get(menu_key.to_lower())
 	if target_menu == null or not target_menu.is_open:
@@ -72,7 +93,9 @@ func close_menu(menu_key : String, open_previous_menu := true, on_close_callback
 		var next_menu = MENU_STACK.back()
 		if next_menu != null:
 			next_menu.open()
+			menu_opened.emit(next_menu.name)
 			OPEN_MENUS.push_back(next_menu)
+			set_background_visibility(next_menu.use_shared_background)
 	
 	on_close_callback.call()
 
@@ -94,17 +117,50 @@ func get_last_menu() -> MenuContainer:
 
 
 ## Close most recent menu
-## [remove_from_stack] if true, also removes the most recent menu from the stack
+## remove_from_stack if true, also removes the most recent menu from the stack
 func close_last_menu(remove_from_stack := false) -> void:
 	var last_menu = OPEN_MENUS.pop_back()
 	if last_menu != null:
 		last_menu.close()
+		menu_closed.emit(last_menu.name)
+	else:
+		return
+	
 	if remove_from_stack:
 		MENU_STACK.pop_back()
+	
+	if not is_open():
+		closed.emit()
+		set_background_visibility(false)
 
 
+## Closes all menus
 func close_all_menus() -> void:
-	for menu in OPEN_MENUS:
-		menu.close()
+	var old_open_menus = OPEN_MENUS
 	OPEN_MENUS = []
 	MENU_STACK = []
+	for menu in old_open_menus:
+		menu.close()
+		menu_closed.emit(menu.name)
+
+	closed.emit()
+	set_background_visibility(false)
+
+
+## Returns true if any menu is open
+func is_open() -> bool:
+	return OPEN_MENUS.size() > 0 or MENU_STACK.size() > 0
+
+
+## Returns true if the passed menu [menu_name] is open
+func is_menu_open(menu_name: String) -> bool:
+	for menu in OPEN_MENUS:
+		if menu.name == menu_name:
+			return true
+	
+	return false
+
+
+func set_background_visibility(value : bool) -> void:
+	if background:
+		background.visible = value
