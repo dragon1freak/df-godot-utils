@@ -15,7 +15,7 @@ signal closed
 ## Set what control should be focused when the MenuContainer is opened, helpful for keyboard/gamepad navigation
 @export var focus_target : Control
 ## How long in milliseconds until the focus_target grabs focus, helpful to prevent accidental interactions when the menu opens
-@export var focus_target_delay := 250
+@export var focus_target_delay := 150
 
 
 ## True when the MenuContainer instance is open
