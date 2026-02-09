@@ -17,20 +17,21 @@ Easily show the correct input glyph based on the current input device in both 2D
 
 **This requires Nathan Hoad's <a href="https://github.com/nathanhoad/godot_input_helper">Input Helper</a> addon, make sure its installed AND enabled**
 
-More info in the [docs](/dynamic-input-glyph/README.md)!
+More info in the [docs](https://docs.dragon1freak.com/df-godot-utils/dynamic-input-glyph/)!
 
 <h3>Just Another Menu System</h3>
 
 JAMS is a simple menu state manager that can be used without any extra code, just wire up your menu buttons signals to the MenuRouter's functions!
 
-More info in the [docs](/just-another-menu-system/README.md)!
+A basic tutorial can be found [here](https://docs.dragon1freak.com/df-godot-utils/jams/getting-started/), and more info is in the [docs](/just-another-menu-system/README.md)!
 
 <h3>Footstepper</h3>
 
 Automatic footstep, jump, and landing sounds for your `CharacterBody3D`! Can also be used in a manual configuration for more complicated controllers or NPCs. Comes with default sounds from [Kenney](https://kenney.nl/) and other CC0 sources.
 
-More info in the [docs](/footstepper/README.md)!
+More info in the [docs](https://docs.dragon1freak.com/df-godot-utils/footstepper/)!
 
 <h3>Bulk Set Materials (old)</h3>
 
 Has been migrated to its own repo as the [Bulk Model Manager](https://github.com/dragon1freak/godot-bulk-model-manager)
+
