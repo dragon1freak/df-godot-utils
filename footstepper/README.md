@@ -8,8 +8,6 @@ Adds a `Footstepper` node that automatically handles sounds for footsteps, jumps
 
 Drop the <code>footstepper</code> folder into your project's <code>addons</code> folder and enable the <code>Footstepper</code> plugin in your project settings.
 
-<br>
-
 ### Usage
 
 Regardless of what mode you use, make sure to create at least a `Default Sound Profile` to be used with your `Footstepper` node.
