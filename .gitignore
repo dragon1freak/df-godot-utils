@@ -18,3 +18,4 @@ mono_crash.*.json
 # Dependancies we want to ignore
 input_helper/
 godot-plugin-refresher/
+GDQuest_GDScript_formatter/

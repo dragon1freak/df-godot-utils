@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duaqbp3w7pyo0"
-path="res://.godot/imported/footstepper_icon.svg-c469aa963d96118a7b4f2aa5ab4c6af6.ctex"
+uid="uid://c5ee0lc3ugp13"
+path="res://.godot/imported/footstepper_tag_icon.svg-9b260e241032c9eaa795c61244e2fcd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/footstepper/footstepper_icon.svg"
-dest_files=["res://.godot/imported/footstepper_icon.svg-c469aa963d96118a7b4f2aa5ab4c6af6.ctex"]
+source_file="res://addons/footstepper/footstepper_tag_icon.svg"
+dest_files=["res://.godot/imported/footstepper_tag_icon.svg-9b260e241032c9eaa795c61244e2fcd8.ctex"]
 
 [params]
 
