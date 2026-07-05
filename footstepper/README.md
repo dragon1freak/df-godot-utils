@@ -47,6 +47,8 @@ Footstepper also supports a material aware mode that allows you to set material 
 
 The material name for the collider is cached globally in a static Dictionary and is **shared between all `Footstepper` nodes** so that name lookups are faster. Meanwhile, the sound profile related to the collider and its name are cached in a **non-static** Dictionary local to each `Footstepper` node and is only looked up once. This is so different `Footstepper` nodes can have different sound profile sets, while still sharing the chache of the collider materials.
 
+> Make sure to move the `Footstepper` node towards the bottom of your character when using material aware mode. The created RayCast3D is 1.25m down, so the typical 2m character heigh may be work immediately, but if you're having detection issues try moving the node down.
+
 #### Quick Start
 1. Enable Material Aware mode under the Material Aware group, and set the collision mask for the RayCast3D used to check colliders and their materials as needed
 2. Create the related sound profiles in the `sound_profiles` array, assigning the related material name and sounds
