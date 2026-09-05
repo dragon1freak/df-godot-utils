@@ -60,3 +60,9 @@ Thats it! Your `Footstepper` node should now be automatically determining what s
 
 > You can also set the sound profiles manually when Material Aware mode is disabled with `set_sound_profile` and `set_sound_profile_index` if you want to manage the different sound profiles yourself. You can do this in both Automatic and Manual usage modes.
 ---
+
+### Credits
+
+The default and example sounds used in the example scenes are sourced from a combination of FilmCow's SFX library and Kenney's audio resources.
+FilmCow's SFX are royalty free with a custom license, both the sounds and license can be found here: [https://filmcow.itch.io/filmcow-sfx](https://filmcow.itch.io/filmcow-sfx)
+Kenney's are available under the CC0 license and are found here: [https://kenney.nl/assets/impact-sounds](https://kenney.nl/assets/impact-sounds)

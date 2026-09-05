@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://bq56vl1f1daxc"]
+
+[ext_resource type="Material" uid="uid://dehjkddnqnvfu" path="res://addons/footstepper/example-scenes/example-materials/grass_material.tres" id="1_8awd4"]
+[ext_resource type="Material" uid="uid://bowdun5q386xd" path="res://addons/footstepper/example-scenes/example-materials/concrete_01.tres" id="2_78jga"]
+[ext_resource type="Material" uid="uid://cn3845jl5wrcg" path="res://addons/footstepper/example-scenes/example-materials/footstepper_tag_test_material.tres" id="3_r8akf"]
+[ext_resource type="Script" uid="uid://e658k8otrok6" path="res://addons/footstepper/footstepper_tag.gd" id="4_wil4h"]
+[ext_resource type="Material" uid="uid://bxcyu8ea5ckr" path="res://addons/footstepper/example-scenes/example-materials/wood.tres" id="5_3hgsh"]
+[ext_resource type="Script" uid="uid://ww7hxwnxeygp" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/player.gd" id="6_i8jnh"]
+[ext_resource type="Script" uid="uid://bfwyjcvtiew6d" path="res://addons/footstepper/footstepper.gd" id="7_8fbom"]
+[ext_resource type="Script" uid="uid://m1rjyeamwk21" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/camera_pivot.gd" id="7_yli06"]
+[ext_resource type="Resource" uid="uid://236be04aq3fs" path="res://addons/footstepper/example-profiles/default_profile.tres" id="8_j4q61"]
+[ext_resource type="PackedScene" uid="uid://ccf670c6bkob8" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/character-male-e.glb" id="8_m6ejx"]
+[ext_resource type="Script" uid="uid://b7517dwyd1msy" path="res://addons/footstepper/footstepper_sound_profile.gd" id="9_srvb2"]
+[ext_resource type="Resource" uid="uid://dxxdqtuq6ms6e" path="res://addons/footstepper/example-profiles/wood_profile.tres" id="10_g4wrk"]
+[ext_resource type="Resource" uid="uid://cxpy0s4gqxm8h" path="res://addons/footstepper/example-profiles/grass_profile.tres" id="11_b3cq0"]
+[ext_resource type="Resource" uid="uid://x5osn5u02b4t" path="res://addons/footstepper/example-profiles/sand_profile.tres" id="12_c02ra"]
+[ext_resource type="PackedScene" uid="uid://bqq0svy5fwdin" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/mouse_lock.tscn" id="13_iydbv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k3oeu"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ucwja"]
+sky_material = SubResource("ProceduralSkyMaterial_k3oeu")
+
+[sub_resource type="Environment" id="Environment_l6hja"]
+background_mode = 2
+sky = SubResource("Sky_ucwja")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_7b7op"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t1lvk"]
+size = Vector3(10.013672, 1, 9.91626)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oukxq"]
+data = PackedVector3Array(-1.4138184, -0.5, 2.9838867, -1.4138184, -0.5, -2.9838867, -1.4138184, 0.5, -2.9838867, 1.4138184, -0.5, -2.9838867, -1.4138184, -0.5, -2.9838867, -1.4138184, -0.5, 2.9838867, -1.4138184, 0.5, -2.9838867, -1.4138184, -0.5, -2.9838867, 1.4138184, -0.5, -2.9838867, -1.4138184, 0.5, -2.9838867, -1.4138184, 0.5, 2.9838867, -1.4138184, -0.5, 2.9838867, -1.4138184, -0.5, 2.9838867, -1.4138184, 0.5, 2.9838867, 1.4138184, 0.5, 2.9838867, 1.4138184, 0.5, 2.9838867, -1.4138184, 0.5, 2.9838867, -1.4138184, 0.5, -2.9838867, -1.4138184, -0.5, 2.9838867, 1.4138184, -0.5, 2.9838867, 1.4138184, -0.5, -2.9838867, 1.4138184, 0.5, 2.9838867, 1.4138184, -0.5, 2.9838867, -1.4138184, -0.5, 2.9838867, 1.4138184, -0.5, -2.9838867, 1.4138184, -0.5, 2.9838867, 1.4138184, 0.5, 2.9838867, 1.4138184, -0.5, -2.9838867, 1.4138184, 0.5, -2.9838867, -1.4138184, 0.5, -2.9838867, -1.4138184, 0.5, -2.9838867, 1.4138184, 0.5, -2.9838867, 1.4138184, 0.5, 2.9838867, 1.4138184, 0.5, 2.9838867, 1.4138184, 0.5, -2.9838867, 1.4138184, -0.5, -2.9838867)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_71pwh"]
+radius = 0.274773
+height = 0.721095
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_exdnv"]
+
+[node name="FootstepperExampleScene" type="Node3D" unique_id=1876491078]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=461002001]
+environment = SubResource("Environment_l6hja")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1939346850]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Environment" type="Node3D" parent="." unique_id=292227147]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, -5)
+
+[node name="Grass" type="MeshInstance3D" parent="Environment" unique_id=1178629778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -5)
+mesh = SubResource("BoxMesh_7b7op")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_8awd4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Grass" unique_id=1765834899]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Grass/StaticBody3D" unique_id=193746844]
+shape = SubResource("BoxShape3D_t1lvk")
+
+[node name="GrassLabel" type="Label3D" parent="Environment/Grass" unique_id=1764924677]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5034838, 0)
+text = "Grass"
+font_size = 64
+
+[node name="Concrete" type="MeshInstance3D" parent="Environment" unique_id=51288282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
+mesh = SubResource("BoxMesh_7b7op")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_78jga")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Concrete" unique_id=363923343]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Concrete/StaticBody3D" unique_id=655503447]
+shape = SubResource("BoxShape3D_t1lvk")
+
+[node name="ConcreteLabel" type="Label3D" parent="Environment/Concrete" unique_id=343776163]
+transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0.503, 0)
+text = "Concrete"
+font_size = 64
+
+[node name="Sand" type="MeshInstance3D" parent="Environment" unique_id=1048065320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 5)
+material_override = ExtResource("3_r8akf")
+mesh = SubResource("BoxMesh_7b7op")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_r8akf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Sand" unique_id=887266270]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Sand/StaticBody3D" unique_id=2014942676]
+shape = SubResource("BoxShape3D_t1lvk")
+
+[node name="FootstepperTag" type="Node3D" parent="Environment/Sand/StaticBody3D" unique_id=2079759288]
+script = ExtResource("4_wil4h")
+material_name = "sand"
+metadata/_custom_type_script = "uid://e658k8otrok6"
+
+[node name="SandLabel" type="Label3D" parent="Environment/Sand" unique_id=710118487]
+transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0.503, 0)
+text = "Sand (With Tag)"
+font_size = 64
+
+[node name="Wood" type="MeshInstance3D" parent="Environment" unique_id=1847026494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, -5)
+mesh = SubResource("BoxMesh_7b7op")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_3hgsh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Wood" unique_id=678315418]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wood/StaticBody3D" unique_id=2010170286]
+shape = SubResource("BoxShape3D_t1lvk")
+
+[node name="WoodLabel" type="Label3D" parent="Environment/Wood" unique_id=1737704879]
+transform = Transform3D(1, -1.7484555e-07, -7.642742e-15, 0, -4.371139e-08, 1, -1.7484555e-07, -1, -4.371139e-08, 0, 0.503, 0)
+text = "Wood"
+font_size = 64
+
+[node name="WoodCSG" type="CSGBox3D" parent="Environment" unique_id=134264182]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 8)
+use_collision = true
+size = Vector3(2.8276367, 1, 5.9677734)
+material = ExtResource("5_3hgsh")
+
+[node name="WoodCSGLabel" type="Label3D" parent="Environment/WoodCSG" unique_id=1683132791]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.50183606, 0)
+text = "Wood CSG"
+font_size = 64
+
+[node name="SandCSGWithCollider" type="CSGBox3D" parent="Environment" unique_id=466504684]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -8)
+size = Vector3(2.8276367, 1, 5.9677734)
+material = ExtResource("3_r8akf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/SandCSGWithCollider" unique_id=820183327]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Environment/SandCSGWithCollider/StaticBody3D" unique_id=1024257628]
+shape = SubResource("ConcavePolygonShape3D_oukxq")
+
+[node name="FootstepperTag" type="Node3D" parent="Environment/SandCSGWithCollider/StaticBody3D" unique_id=1946902629]
+script = ExtResource("4_wil4h")
+material_name = "sand"
+metadata/_custom_type_script = "uid://e658k8otrok6"
+
+[node name="SandCSGLabel" type="Label3D" parent="Environment/SandCSGWithCollider" unique_id=1752384301]
+transform = Transform3D(1.3113416e-07, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, -1.3113416e-07, -5.7320566e-15, 0, 0.50183606, 0)
+text = "Sand CSG
+(With collider and tag)"
+font_size = 64
+
+[node name="MaterialAwareText" type="Label3D" parent="Environment" unique_id=1797852348]
+transform = Transform3D(-4.3711395e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711395e-08, 5, 2.0476208, 1.3113419e-07)
+text = "With material aware mode enabled, the Footstepper node will automatically determine what sound to play for the surface below the player. Example sounds sourced from FilmCow and Kenney, link in the README"
+font_size = 48
+autowrap_mode = 2
+width = 1000.0
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1281257727 node_paths=PackedStringArray("animation_player")]
+collision_layer = 2
+script = ExtResource("6_i8jnh")
+animation_player = NodePath("playermodel/character-male-e2/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=829590346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.358072, 0)
+shape = SubResource("CapsuleShape3D_71pwh")
+
+[node name="camera_pivot" type="Node3D" parent="Player" unique_id=1664308831]
+script = ExtResource("7_yli06")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/camera_pivot" unique_id=612666147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512907, 0)
+shape = SubResource("SeparationRayShape3D_exdnv")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/camera_pivot/SpringArm3D" unique_id=1402500409]
+
+[node name="playermodel" type="Node3D" parent="Player" unique_id=2088362967]
+
+[node name="character-male-e2" parent="Player/playermodel" unique_id=1747052416 instance=ExtResource("8_m6ejx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0071882, 0)
+
+[node name="Skeleton3D" parent="Player/playermodel/character-male-e2/character-male-e" parent_id_path=PackedInt32Array(1747052416, 1769017194) index="0" unique_id=1781197603]
+bones/4/rotation = Quaternion(0, 0, -0.3826835, 0.92387956)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
+[node name="Footstepper" type="Node3D" parent="Player" unique_id=566589072]
+script = ExtResource("7_8fbom")
+manual_footstep = true
+material_aware_enabled = true
+audio_is_3d = true
+default_sound_profile = ExtResource("8_j4q61")
+sound_profiles = Array[ExtResource("9_srvb2")]([ExtResource("10_g4wrk"), ExtResource("11_b3cq0"), ExtResource("12_c02ra")])
+metadata/_custom_type_script = "uid://bfwyjcvtiew6d"
+
+[node name="MouseLock" parent="." unique_id=1759542147 instance=ExtResource("13_iydbv")]
+
+[editable path="Player/playermodel/character-male-e2"]

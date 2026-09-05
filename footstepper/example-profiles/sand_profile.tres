@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FootstepperSoundProfile" format=3 uid="uid://x5osn5u02b4t"]
+
+[ext_resource type="Script" uid="uid://b7517dwyd1msy" path="res://addons/footstepper/footstepper_sound_profile.gd" id="1_3827b"]
+[ext_resource type="AudioStream" uid="uid://dmh0b4e5fxlvc" path="res://addons/footstepper/sounds/sand/sand_footstep.wav" id="2_3827b"]
+[ext_resource type="AudioStream" uid="uid://dl7j2g3uiy6oc" path="res://addons/footstepper/sounds/default/jump.ogg" id="3_bgq0e"]
+[ext_resource type="AudioStream" uid="uid://b18s31k1ps3go" path="res://addons/footstepper/sounds/sand/sand_landing.wav" id="4_3827b"]
+
+[resource]
+script = ExtResource("1_3827b")
+material_name = "sand"
+sound_footstep = ExtResource("2_3827b")
+sound_land = ExtResource("4_3827b")
+metadata/_custom_type_script = "uid://b7517dwyd1msy"

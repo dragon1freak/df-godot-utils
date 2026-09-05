@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FootstepperSoundProfile" format=3 uid="uid://cxpy0s4gqxm8h"]
+
+[ext_resource type="Script" uid="uid://b7517dwyd1msy" path="res://addons/footstepper/footstepper_sound_profile.gd" id="1_2hlod"]
+[ext_resource type="AudioStream" uid="uid://l083q651sh8x" path="res://addons/footstepper/sounds/grass/grass_footsteps.wav" id="2_2hlod"]
+[ext_resource type="AudioStream" uid="uid://dl7j2g3uiy6oc" path="res://addons/footstepper/sounds/default/jump.ogg" id="3_dln3e"]
+[ext_resource type="AudioStream" uid="uid://sxoom8fltug7" path="res://addons/footstepper/sounds/grass/grass_landing.wav" id="4_dln3e"]
+
+[resource]
+script = ExtResource("1_2hlod")
+material_name = "grass"
+sound_footstep = ExtResource("2_2hlod")
+sound_land = ExtResource("4_dln3e")
+metadata/_custom_type_script = "uid://b7517dwyd1msy"
