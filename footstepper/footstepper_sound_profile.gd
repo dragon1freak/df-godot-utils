@@ -6,11 +6,11 @@ extends Resource
 @export var material_name: String = ""
 @export_group("Sounds", "sound_")
 ## Sound played by the Run state for footsteps
-@export var sound_footstep: AudioStream = preload("./sounds/footstep.ogg")
+@export var sound_footstep: AudioStream = preload("./sounds/default/footstep.ogg")
 ## Sound played by the Jump state for jumping
-@export var sound_jump: AudioStream = preload("./sounds/jump.ogg")
+@export var sound_jump: AudioStream = preload("./sounds/default/jump.ogg")
 ## Sound played by the Fall state when landing
-@export var sound_land: AudioStream = preload("./sounds/land.ogg")
+@export var sound_land: AudioStream = preload("./sounds/default/land.ogg")
 
 @export_group("")
 
