@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqq0svy5fwdin"]
+
+[ext_resource type="Script" uid="uid://ben6ruej4u42p" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/mouse_lock.gd" id="1_rl4t2"]
+
+[node name="MouseLock" type="Node"]
+script = ExtResource("1_rl4t2")

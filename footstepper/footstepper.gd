@@ -8,12 +8,17 @@ extends Node3D
 ## Static cache for collider names, shared between Footstepper nodes for faster collider name lookups
 static var COLLIDER_MATERIAL_NAME_CACHE: Dictionary = { }
 
-## If true, the Footstepper node's sounds must be called using the helper functions, but may be placed under any node type.
-@export var manual_activation := false
+
+## If true, the Footstepper node's footstep sounds must be called using the helper functions. If all sounds are set to manual, Footstepper can be used under any node type.
+@export var manual_footstep := false
+## If true, the Footstepper node's jump sounds must be called using the helper functions. If all sounds are set to manual, Footstepper can be used under any node type.
+@export var manual_jump := false
+## If true, the Footstepper node's land sounds must be called using the helper functions. If all sounds are set to manual, Footstepper can be used under any node type.
+@export var manual_land := false
+
 ## Distance the player should move between footsteps.
 @export var footstep_distance: float = 2.0
-## The name of the target audio bus.  If it doesnt exist, will fall back to Master.
-@export var audio_bus: String = "Master"
+
 @export_group("Material Aware", "material_aware_")
 ## If true, the Footstepper node will check the current floor collider's material or FootstepperTag name against its sound profiles and play the correct sound.
 @export var material_aware_enabled := false
@@ -32,6 +37,8 @@ static var COLLIDER_MATERIAL_NAME_CACHE: Dictionary = { }
 ## Number of AudioStreamPlayer nodes to create and hold. Too few and existing sounds may get cut off to play the next sound,
 ## too many and itll be redundant. The default of 3 is typically a good number.
 @export_range(3, 12) var audio_number_of_players := 3
+## The name of the target audio bus.  If it doesnt exist, will fall back to Master.
+@export var audio_bus: String = "Master"
 @export_group("")
 ## The default sound set to play when not using material aware mode. If no default is set, the first sound set with either no
 ## material name or the material name "default" will be used instead.
@@ -44,7 +51,7 @@ static var COLLIDER_MATERIAL_NAME_CACHE: Dictionary = { }
 ## may have different profiles for the same material.
 var COLLIDER_SOUND_CACHE: Dictionary = { }
 ## Array of available audio players.
-var available_players: Array[AudioStreamPlayer] = []
+var available_players: Array = []
 ## ID of the current collider
 var current_collider_id
 ## The current sound profile used when playing sounds.
@@ -66,13 +73,11 @@ var previous_velocity: Vector3 = Vector3.ZERO
 @onready var distance_travelled := footstep_distance / 2.0
 ## RegEx used to pull the file name from the path with no extension
 @onready var file_name_regex: RegEx = RegEx.create_from_string(".+/([\\w_\\d]+)(?:$|.\\w+)")
-
+## Helper boolean to check if all sounds are set to manual
+@onready var is_manual : bool = manual_footstep and manual_jump and manual_land
 
 func _ready() -> void:
-	if manual_activation:
-		set_physics_process(false)
-	else:
-		_check_parent()
+	_check_parent()
 	_set_up_audioplayers()
 
 	if not default_sound_profile:
@@ -102,10 +107,17 @@ func _physics_process(delta: float) -> void:
 	if material_aware_enabled:
 		_check_material()
 
-	_handle_landing()
-	_handle_jumping()
-	_handle_footsteps()
-
+	if not manual_land:
+		_handle_landing()
+	if not manual_jump:
+		_handle_jumping()
+	if not manual_footstep:
+		_handle_footsteps()
+	
+	# If the node is in manual mode, meaning all sounds are set to manual, stop here early
+	if is_manual:
+		return
+	
 	previous_floor_state = parent.is_on_floor()
 	previous_position = self.global_position
 	previous_velocity = parent.velocity
@@ -114,17 +126,17 @@ func _physics_process(delta: float) -> void:
 # Helper functions used for manual activation
 ## Plays the set footstep sound using the internal AudioStreamPlayer3D
 func play_footstep() -> void:
-	_play_sound(self.sound_footstep)
+	_play_sound(self.current_sound_profile.sound_footstep)
 
 
 ## Plays the set jump sound using the internal AudioStreamPlayer3D
 func play_jump() -> void:
-	_play_sound(self.sound_jump)
+	_play_sound(self.current_sound_profile.sound_jump)
 
 
 ## Plays the set landing sound using the internal AudioStreamPlayer3D
 func play_landing() -> void:
-	_play_sound(self.sound_land)
+	_play_sound(self.current_sound_profile.sound_land)
 
 
 ## Sets the Footstepper node's current sound profile to the passed profile
@@ -173,6 +185,11 @@ func _check_material() -> void:
 
 
 func _check_parent() -> void:
+	# If we're in manual mode we still need the parent
+	if is_manual:
+		parent = get_parent()
+		return
+	
 	var new_parent = get_parent_node_3d()
 	if new_parent is CharacterBody3D:
 		parent = new_parent

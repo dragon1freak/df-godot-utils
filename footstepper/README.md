@@ -12,6 +12,8 @@ Drop the <code>footstepper</code> folder into your project's <code>addons</code>
 
 Regardless of what mode you use, make sure to create at least a `Default Sound Profile` to be used with your `Footstepper` node.
 
+> There are now example scenes for both first and third person character setups, check them out to see how the Footstepper node is being used!
+
 #### Automatic
 
 Just add a `Footstepper` node as a **direct child** of your `CharacterBody3D` node, thats it! You can use the settings on the node to weak the behavior and sounds as needed.
@@ -60,3 +62,12 @@ Thats it! Your `Footstepper` node should now be automatically determining what s
 
 > You can also set the sound profiles manually when Material Aware mode is disabled with `set_sound_profile` and `set_sound_profile_index` if you want to manage the different sound profiles yourself. You can do this in both Automatic and Manual usage modes.
 ---
+
+### Credits
+
+The default and example sounds used in the example scenes are sourced from a combination of FilmCow's SFX library and Kenney's audio resources.
+FilmCow's SFX are royalty free with a custom license, both the sounds and license can be found here: [https://filmcow.itch.io/filmcow-sfx](https://filmcow.itch.io/filmcow-sfx)
+Kenney's are available under the CC0 license and are found here: [https://kenney.nl/assets/impact-sounds](https://kenney.nl/assets/impact-sounds)\
+
+The third-person controller used for the third person example is the CC0 controller by SRCoder. It can be found
+on the Godot Asset Store both in the engine and here: https://store.godotengine.org/asset/srcoder/srcoders-thirperson-controller/

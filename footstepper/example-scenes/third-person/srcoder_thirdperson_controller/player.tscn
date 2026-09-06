@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dgaexk2mqn6j8"]
+
+[ext_resource type="Script" uid="uid://ww7hxwnxeygp" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/player.gd" id="1_4s81h"]
+[ext_resource type="PackedScene" uid="uid://ccf670c6bkob8" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/character-male-e.glb" id="1_jt3wm"]
+[ext_resource type="Script" uid="uid://m1rjyeamwk21" path="res://addons/footstepper/example-scenes/third-person/srcoder_thirdperson_controller/assets/camera_pivot.gd" id="3_0ffrl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_71pwh"]
+radius = 0.274773
+height = 0.721095
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_exdnv"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1281257727 node_paths=PackedStringArray("animation_player")]
+collision_layer = 2
+script = ExtResource("1_4s81h")
+animation_player = NodePath("playermodel/character-male-e2/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=829590346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.358072, 0)
+shape = SubResource("CapsuleShape3D_71pwh")
+
+[node name="camera_pivot" type="Node3D" parent="." unique_id=1664308831]
+script = ExtResource("3_0ffrl")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="camera_pivot" unique_id=612666147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512907, 0)
+shape = SubResource("SeparationRayShape3D_exdnv")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot/SpringArm3D" unique_id=1402500409]
+
+[node name="playermodel" type="Node3D" parent="." unique_id=2088362967]
+
+[node name="character-male-e2" parent="playermodel" unique_id=1747052416 instance=ExtResource("1_jt3wm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0071882, 0)
+
+[node name="Skeleton3D" parent="playermodel/character-male-e2/character-male-e" parent_id_path=PackedInt32Array(1747052416, 1419902870) index="0" unique_id=675947525]
+bones/4/rotation = Quaternion(0, 0, -0.38268346, 0.9238795)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
+[editable path="playermodel/character-male-e2"]
